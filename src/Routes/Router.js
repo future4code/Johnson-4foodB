@@ -11,44 +11,45 @@ import Restaurant from "../Pages/Restaurant/Restaurant";
 import Profile from "../Pages/Profile/Profile";
 import Error from "../Pages/Error/Error";
 
+
 export default function Router() {
   return (
     <BrowserRouter>
-      <Switch>
-  
-        <Route exact path={"/"}>
-          <Login />
-        </Route>
+      
+        <Switch>
+          <Route exact path={"/"}>
+            <Login />
+          </Route>
 
-        <Route exact path={"/cadastro"}>
-          <SignUp />
-        </Route>
+          <Route exact path={"/cadastro"}>
+            <SignUp />
+          </Route>
 
-        <Route exact path={"/cadastro/endereco"}>
-          <Address />
-        </Route>
+          <Route exact path={"/cadastro/endereco"}>
+            <Address />
+          </Route>
 
-        <Route exact path={"/home"}>
-          <Home />
-        </Route>
+          <Route exact path={"/home"}>
+            <Home />
+          </Route>
 
-        <Route exact path={"/restaurante/:id"}>
-          <Restaurant />
-        </Route>
+          <Route exact path={"/restaurante/:id"}>
+            <Restaurant />
+          </Route>
 
-        <Route exact path={"/carrinho"}>
-          <Cart />
-        </Route>
+          <Route exact path={"/carrinho"}>
+            <Cart />
+          </Route>
 
-        <Route exact path={"/perfil"}>
-          <Profile />
-        </Route>
+          <Route exact path={"/perfil"}>
+            <Profile />
+          </Route>
 
-        <Route>
-          <Error />
-        </Route>
-
-      </Switch>
+          <Route>
+            <Error />
+          </Route>
+        </Switch>
+      
     </BrowserRouter>
   );
 }

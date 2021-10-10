@@ -1,12 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { SplashScreen } from './Components/splashScreen';
-import { Login } from './Pages/Login';
+import Router from './Routes/Router'
 
 function App() {
   return (
-      <Login/>
+      <Router/>
   );
 }
 

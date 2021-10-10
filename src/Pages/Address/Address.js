@@ -1,10 +1,14 @@
 import React from 'react';
 
+//Estilização
+import {ContainerPage} from './styled'
+
+
 const Adresss = () => {
     return (
-        <div>
+        <ContainerPage>
             <h1>Endereço</h1>
-        </div>
+        </ContainerPage>
     );
 };
 

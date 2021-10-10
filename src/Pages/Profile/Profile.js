@@ -1,10 +1,14 @@
 import React from 'react';
 
+//Estilização
+import {ContainerPage} from './styled'
+
+
 const Profile = () => {
     return (
-        <div>
+        <ContainerPage>
             <h1>Perfil</h1>
-        </div>
+        </ContainerPage>
     );
 };
 

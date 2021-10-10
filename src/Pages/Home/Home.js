@@ -1,10 +1,13 @@
 import React from 'react';
 
+//Estilização
+import {ContainerPage} from './styled'
+
 const Home = () => {
     return (
-        <div>
+        <ContainerPage>
             <h1>Home</h1>  
-        </div>
+        </ContainerPage>
     );
 };
 

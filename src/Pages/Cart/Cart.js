@@ -1,10 +1,13 @@
 import React from 'react';
 
+//Estilização
+import {ContainerPage} from './styled'
+
 const Cart = () => {
     return (
-        <div>
+        <ContainerPage>
             <h1>Carrinho</h1>  
-        </div>
+        </ContainerPage>
     );
 };
 

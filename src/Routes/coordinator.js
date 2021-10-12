@@ -2,7 +2,7 @@ export const goToLogin = (history) => {
   history.push("/entrar");
 };
 
-export const goToSingUp = (history) => {
+export const goToSignUp = (history) => {
   history.push("/cadastro");
 };
 

@@ -4,7 +4,7 @@ export const textDarkGrey = "#A6A29F" //cinza escuro
 export const textBlack = "#000000" //preto
 
 //cores principais
-export const primaryColorRed = "#EA1D2C" //vermelho
+export const primaryColor = "#e8222e" //vermelho
 export const secundaryColorWhite = "#FFFFFF" //branco
 
 //cores secundárias

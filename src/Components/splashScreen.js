@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import styled from 'styled-components'
+import { primaryColor } from '../constants/colors'
 
 const Wrapper = styled.div`
     height: 100vh;
@@ -12,21 +13,8 @@ const Background = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
-    /* animation-duration: 1s;
-    animation-name: slidein;   
-    
-    @keyframes slidein {
-    from {
-        margin-left: 100%;
-        width: 300%;
-    }
-
-    to {
-        margin-left: 0%;
-        width: 100%;
-    }
-    } */
+    background-color: ${primaryColor};
+ 
 `
 
 const Name = styled.h1`
@@ -40,15 +28,17 @@ const Name = styled.h1`
   100% {opacity:1;}
 }
 
+
 `
 
 export const SplashScreen = () => {
     const [showing, setShowing] = useState(true)
 
 
+
     return (
         <Wrapper>
-            <Background showing={showing} >
+            <Background  >
                 <Name>4Food</Name>
             </Background>
         </Wrapper>

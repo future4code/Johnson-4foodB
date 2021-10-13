@@ -1,54 +1,73 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-
-//Estilização
 import styled from 'styled-components'
-import {ContainerPage, Wrapper, Background, Name  } from './styled'
-
-//Componentes
+import { Wrapper, Background, Name, LoginBox, SubmitButton, SignUp, HidePassword, BackgroundName } from './styled'
 import { SplashScreen } from "../../Components/splashScreen";
-
-//Material UI
 import TextField from "@mui/material/TextField";
+import InputAdornment from '@mui/material/InputAdornment';
+import HiddenPassword from '../../Images/senha.png'
+import VisiblePassword from '../../Images/senha-2.png'
+import { Button } from "@mui/material";
 
-
-const Input = styled(TextField)`
-  margin-bottom: 20px;
-`;
 
 
 const Login = () => {
-  const [showing, setShowing] = useState(false);
+  const [showSplashScreen, setShowSplashScreen] = useState(true);
+  const [showPassword, setShowPassword] = useState('password')
+  const [passwordImage, setPasswordImage] = useState(HiddenPassword)
 
   useEffect(() => {
-    setTimeout(() => {
-      setShowing(true);
-    }, 3000);
+    setTimeout(() => { setShowSplashScreen(false); }, 3000);
   }, []);
 
+  const HideShowPassword = () => {
+    const password = showPassword === 'password' ? 'text' : 'password'
+    const Image = passwordImage === HiddenPassword ? VisiblePassword : HiddenPassword
+    setShowPassword(password)
+    setPasswordImage(Image)
+  }
+
   const Render = () => {
-    switch (showing) {
-      case false:
-        return <SplashScreen />;
+    switch (showSplashScreen) {
       case true:
+        return <SplashScreen />;
+      case false:
         return (
           <Background>
             <Name>4Food</Name>
-            <p>Entrar</p>
+            <h3>Entrar</h3>
 
-            <Input
-              required
-              id="outlined-required"
-              label="Required"
-              defaultValue="email@email.com"
-            />
+            <LoginBox
+              component="form"
+              sx={{
+                '& .MuiTextField-root': { m: 1, width: '20.5rem', },
+              }}
+              noValidate
+              autoComplete="off"
+            >
+              <TextField
+                required
+                type='email'
+                id="outlined-required"
+                label="Email"
+                placeholder="email@email.com"
 
-            <TextField
-              required
-              id="outlined-required"
-              label="Required"
-              defaultValue="Hello World"
-            />
+              />
+
+              <TextField
+                required
+                type={showPassword}
+                id="outlined-required"
+                label="Senha"
+                placeholder="Mínimo de 6 caracteres"
+                InputProps={{
+                  endAdornment: <InputAdornment position="end"><HidePassword type='button' onClick={HideShowPassword} ><img src={passwordImage} ></img></HidePassword></InputAdornment>,
+                }}
+              />
+
+              <SubmitButton>Entrar</SubmitButton>
+            </LoginBox>
+            <SignUp>Não possui cadastro? Clique aqui.</SignUp>
           </Background>
         );
     }
@@ -56,7 +75,10 @@ const Login = () => {
 
   return (
     <>
-      <Wrapper>{Render()}</Wrapper>
+      <Wrapper>
+
+        {Render()}
+      </Wrapper>
     </>
   );
 };

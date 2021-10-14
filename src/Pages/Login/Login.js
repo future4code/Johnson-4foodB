@@ -8,6 +8,8 @@ import InputAdornment from '@mui/material/InputAdornment';
 import HiddenPassword from '../../Images/senha.png'
 import VisiblePassword from '../../Images/senha-2.png'
 import { Button } from "@mui/material";
+import { goToSignUp } from "../../Routes/coordinator";
+import { useHistory } from "react-router";
 
 
 
@@ -15,6 +17,8 @@ const Login = () => {
   const [showSplashScreen, setShowSplashScreen] = useState(true);
   const [showPassword, setShowPassword] = useState('password')
   const [passwordImage, setPasswordImage] = useState(HiddenPassword)
+  const history = useHistory()
+
 
   useEffect(() => {
     setTimeout(() => { setShowSplashScreen(false); }, 3000);
@@ -67,7 +71,7 @@ const Login = () => {
 
               <SubmitButton>Entrar</SubmitButton>
             </LoginBox>
-            <SignUp>Não possui cadastro? Clique aqui.</SignUp>
+            <SignUp onClick={() => goToSignUp(history)} >Não possui cadastro? Clique aqui.</SignUp>
           </Background>
         );
     }

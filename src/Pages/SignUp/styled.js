@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { Box } from '@mui/system';
 import { primaryColor } from '../../constants/colors';
 
+
 export const Wrapper = styled.div`
   height: 100vh;
   background-color: red;

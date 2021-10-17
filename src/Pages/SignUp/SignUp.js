@@ -3,12 +3,44 @@ import { TextField } from '@mui/material';
 import { Background, InputBox, SubmitButton, Wrapper, Name, ReturnBox, Back } from "./styled";
 import BackButton from '../../Images/back.png'
 import { useHistory } from 'react-router-dom';
-import { goToLogin } from '../../Routes/coordinator';
+import { goToAddress, goToLogin } from '../../Routes/coordinator';
 import InputMask from 'react-input-mask'
+import { useState } from 'react';
+import axios from 'axios';
 
 const SignUp = () => {
     const history = useHistory()
+    const [form, setForm] = useState({ name: '', email: '', cpf: '', password: '' })
 
+    const onChange = (prop) => (event) => {
+        setForm({ ...form, [prop]: event.target.value })
+        console.log(form.cpf)
+    }
+
+
+
+    const postSignUp = async (event) => {
+        event.preventDefault()
+        const url = 'https://us-central1-missao-newton.cloudfunctions.net/fourFoodB/signup'
+        const body = {
+            name: form.name,
+            email: form.email,
+            cpf: form.cpf,
+            password: form.password
+        }
+        const header = 'Content-Type: application/json'
+        try {
+            const response = await axios.post(url, body, header)
+            console.log(response)
+            goToAddress(history)
+            localStorage.setItem('authToken', response.data.token)
+
+
+        } catch (error) {
+            alert('Ocorreu um erro')
+            console.log(error)
+        }
+    }
     return (
         <Wrapper>
 
@@ -25,6 +57,7 @@ const SignUp = () => {
                     }}
                     noValidate
                     autoComplete="off"
+                    onSubmit={postSignUp}
                 >
 
                     <TextField
@@ -33,22 +66,26 @@ const SignUp = () => {
                         id="outlined-required"
                         label="Nome"
                         placeholder="Nome e Sobrenome"
+                        value={form.name}
+                        onChange={onChange('name')}
 
                     />
 
                     <TextField
                         required
-                        type='number'
+                        type='email'
                         id="outlined-required"
                         label="Email"
                         placeholder="email@email.com"
-                        value=' '
-
+                        value={form.email}
+                        onChange={onChange('email')}
                     />
 
                     <InputMask
                         mask="999.999.999-99"
                         disabled={false}
+                        value={form.cpf}
+                        onChange={onChange('cpf')}
                     >
                         {() => <TextField
                             required
@@ -56,8 +93,10 @@ const SignUp = () => {
                             id="filled-classic"
                             label="CPF"
                             placeholder="000.000.000-00"
+
                         />}
                     </InputMask>
+
 
                     <TextField
                         required
@@ -65,7 +104,8 @@ const SignUp = () => {
                         id="outlined-required"
                         label="Senha"
                         placeholder="Mínimo 6 caracteres"
-
+                        value={form.password}
+                        onChange={onChange('password')}
                     />
                     <TextField
                         required
@@ -75,9 +115,9 @@ const SignUp = () => {
                         placeholder="Confirmar a senha anterior"
 
                     />
+                    <SubmitButton >Criar</SubmitButton>
 
                 </InputBox>
-                <SubmitButton>Cadastrar</SubmitButton>
 
             </Background>
         </Wrapper>

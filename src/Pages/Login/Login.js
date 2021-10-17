@@ -7,9 +7,9 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from '@mui/material/InputAdornment';
 import HiddenPassword from '../../Images/senha.png'
 import VisiblePassword from '../../Images/senha-2.png'
-import { Button } from "@mui/material";
-import { goToSignUp } from "../../Routes/coordinator";
+import { goToHome, goToSignUp } from "../../Routes/coordinator";
 import { useHistory } from "react-router";
+import axios from "axios";
 
 
 
@@ -17,6 +17,7 @@ const Login = () => {
   const [showSplashScreen, setShowSplashScreen] = useState(true);
   const [showPassword, setShowPassword] = useState('password')
   const [passwordImage, setPasswordImage] = useState(HiddenPassword)
+  const [form, setForm] = useState({ email: '', password: '' })
   const history = useHistory()
 
 
@@ -30,6 +31,29 @@ const Login = () => {
     setShowPassword(password)
     setPasswordImage(Image)
   }
+
+  const onChange = (prop) => (event) => {
+    setForm({ ...form, [prop]: event.target.value })
+  }
+
+  const postLogin = async (event) => {
+    event.preventDefault()
+    const body = {
+      email: form.email,
+      password: form.password
+    }
+    const url = 'https://us-central1-missao-newton.cloudfunctions.net/fourFoodB/login'
+    const header = 'Content-Type: application/json'
+    try {
+      const response = await axios.post(url, body, header)
+      localStorage.setItem('authToken', response.data.token)
+      goToHome(history)
+
+    } catch (error) {
+      alert('ocorreu um erro')
+    }
+  }
+
 
   const Render = () => {
     switch (showSplashScreen) {
@@ -48,6 +72,7 @@ const Login = () => {
               }}
               noValidate
               autoComplete="off"
+              onSubmit={postLogin}
             >
               <TextField
                 required
@@ -55,6 +80,7 @@ const Login = () => {
                 id="outlined-required"
                 label="Email"
                 placeholder="email@email.com"
+                onChange={onChange('email')}
 
               />
 
@@ -64,6 +90,7 @@ const Login = () => {
                 id="outlined-required"
                 label="Senha"
                 placeholder="Mínimo de 6 caracteres"
+                onChange={onChange('password')}
                 InputProps={{
                   endAdornment: <InputAdornment position="end"><HidePassword type='button' onClick={HideShowPassword} ><img src={passwordImage} ></img></HidePassword></InputAdornment>,
                 }}

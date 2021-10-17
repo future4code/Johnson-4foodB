@@ -1,14 +1,11 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const ContainerPage = styled.div`
-  min-width: 400px;
-  max-width: 900px;
-  height: 100vh;
-  background-color: #e8222e;
-
+  width: 100vw;
+  max-width: 420px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  color: #fff;
-  font-family: sans-serif;
+  align-items: center;
+  margin-bottom: 70px;
 `;

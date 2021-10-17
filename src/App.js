@@ -1,9 +1,15 @@
-import React from 'react';
-import Router from './Routes/Router'
+import React from "react";
+import { ThemeProvider } from '@material-ui/core/styles'
+import theme from '../src/constants/theme'
+import FooterNav from "./Components/FooterNav/FooterNav";
+import Router from "./Routes/Router";
+ 
 
 function App() {
   return (
-      <Router/>
+    <ThemeProvider theme={theme}>
+      <Router />
+    </ThemeProvider>
   );
 }
 

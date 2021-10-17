@@ -38,6 +38,8 @@ export const SubmitButton = styled.button`
   border: none;
   font-size: 1rem;
   margin-top:10px;
+  cursor: pointer;
+
 
   :hover{
     cursor: pointer;
@@ -60,4 +62,6 @@ export const Back = styled.button`
   background-color: transparent;
   border: none;
   margin-left: 20px;
+  cursor: pointer;
+
 `

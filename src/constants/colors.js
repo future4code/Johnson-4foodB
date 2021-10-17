@@ -5,7 +5,7 @@ export const textBlack = "#000000" //preto
 
 //cores principais
 export const primaryColor = "#e8222e" //vermelho
-export const secundaryColorWhite = "#FFFFFF" //branco
+export const secundaryColor = "#FFFFFF" //branco
 
 //cores secundárias
 export const cor3 = "#A02331" //vermelho (próximo a vinho)

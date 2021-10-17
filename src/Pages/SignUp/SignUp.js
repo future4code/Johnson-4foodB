@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { goToAddress, goToLogin } from '../../Routes/coordinator';
 import InputMask from 'react-input-mask'
 import { useState } from 'react';
+import {BASE_URL} from '../../constants/urls'
 import axios from 'axios';
 
 const SignUp = () => {
@@ -21,7 +22,7 @@ const SignUp = () => {
 
     const postSignUp = async (event) => {
         event.preventDefault()
-        const url = 'https://us-central1-missao-newton.cloudfunctions.net/fourFoodB/signup'
+        const url = `${BASE_URL}/signup`
         const body = {
             name: form.name,
             email: form.email,

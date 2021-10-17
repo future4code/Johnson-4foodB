@@ -14,9 +14,9 @@ export const goToHome = (history) => {
   history.push("/home");
 };
 
-export const goToRestaurant = (history) => {
-  history.push(`/restaurante`);
-  //history.push(`/restaurante/${id}`);
+export const goToRestaurant = (history, id) => {
+//  history.push(`/restaurante`);
+history.push(`/restaurante/${id}`);
 };
 
 export const goToCart = (history) => {

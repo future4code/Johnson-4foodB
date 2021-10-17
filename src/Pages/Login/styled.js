@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Box } from "@mui/system";
 import { primaryColor } from "../../constants/colors";
 
-
 export const Wrapper = styled.div`
   height: 100vh;
   background-color: ${primaryColor};
@@ -35,7 +34,6 @@ export const Background = styled.div`
   }
 `;
 
-
 export const Name = styled.h1`
   color: red;
 `;
@@ -44,16 +42,16 @@ export const LoginBox = styled(Box)`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-`
+`;
 
 export const HidePassword = styled.button`
   background-color: transparent;
-  border:none;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-`
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+`;
 
 export const SubmitButton = styled.button`
   width: 20.5rem;
@@ -61,12 +59,16 @@ export const SubmitButton = styled.button`
   background-color: ${primaryColor};
   border: none;
   font-size: 1rem;
-  margin-top:10px;
-
-`
+  margin-top: 10px;
+  cursor: pointer;
+`;
 
 export const SignUp = styled(SubmitButton)`
-    margin-top: 10px;
-    background-color: transparent;
-    font-weight: bold;
-`
+  margin-top: 10px;
+  background-color: transparent;
+  font-weight: bold;
+
+  span {
+    text-decoration: underline;
+  }
+`;

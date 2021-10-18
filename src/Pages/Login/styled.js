@@ -67,8 +67,4 @@ export const SignUp = styled(SubmitButton)`
   margin-top: 10px;
   background-color: transparent;
   font-weight: bold;
-
-  span {
-    text-decoration: underline;
-  }
 `;

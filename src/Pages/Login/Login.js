@@ -1,16 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { BASE_URL } from "../../constants/urls";
-import {
-  Wrapper,
-  Background,
-  Name,
-  LoginBox,
-  SubmitButton,
-  SignUp,
-  HidePassword,
-  BackgroundName,
-} from "./styled";
+import { Wrapper, Background, Name, LoginBox, SubmitButton, SignUp, HidePassword } from "./styled";
 import { SplashScreen } from "../../Components/splashScreen";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -112,10 +103,8 @@ const Login = () => {
               <SubmitButton>Entrar</SubmitButton>
             </LoginBox>
 
-            <SignUp>
-              Não possui cadastro?{" "}
-              <span onClick={() => goToSignUp(history)}>Clique aqui</span>
-            </SignUp>
+            <SignUp onClick={() => goToSignUp(history)}>Não possui cadastro? Clique aqui</SignUp>
+            
           </Background>
         );
     }

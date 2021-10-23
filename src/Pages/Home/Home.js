@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useHistory, useParams } from "react-router";
 //Components
 import RestaurantCard from "../../Components/RestaurantCard/RestaurantCard";
 //Constants
@@ -31,12 +32,29 @@ const Home = () => {
       });
   };
 
-  return (
-    <>
+
+  let {id} = useParams()
+
+
+  const history = useHistory()
+  const changeToDetails = (id) => {
+      history.push(`/restaurante/${id}`)
+     
+
+
+    }
+
+
+    return (
+      <>
+    
       <ContainerPage>
+
+
         {restaurants.map((item) => {
           return (
-            <RestaurantCard
+            <button onClick={() => changeToDetails(item.id)}>
+             <RestaurantCard 
               key={item.id}
               id={item.id}
               name={item.name}
@@ -44,6 +62,7 @@ const Home = () => {
               shipping={item.shipping}
               image={<img src={item.logoUrl} alt="logo restaurante" />}
             />
+            </button>
           );
         })}
       </ContainerPage>
